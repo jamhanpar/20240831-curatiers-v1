@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
+        inter: [
           'Inter',
           'system-ui',
           '-apple-system',

@@ -1,13 +1,32 @@
-import { ThemeProvider } from '@emotion/react';
-import { theme } from './theme/mui-system-theme.ts';
-import Nav from './components/nav/Nav.tsx';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+//--- LAYOUTS ---//
+import RootLayout, { loader } from './routes/RootLayout.tsx';
+
+//--- PAGES ---//
+import HomePage from './routes/HomePage.tsx';
+import ErrorPage from './routes/ErrorPage.tsx';
+import ContactPage from './routes/ContactPage.tsx';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    loader,
+    children: [
+      {
+        path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: 'contacts/:contactId',
+        element: <ContactPage />,
+      },
+    ],
+  },
+]);
 
 export default function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <div className="min-h-screen flex flex-col font-inter">
-        <Nav />
-      </div>
-    </ThemeProvider>
-  );
+  return <RouterProvider router={router} />;
 }
