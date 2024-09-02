@@ -65,8 +65,15 @@ export default function Contact() {
   );
 }
 
-function Favorite({ contact }) {
+interface FavoriteProps {
+  contact: {
+    favorite: boolean;
+  };
+}
+
+function Favorite({ contact }: FavoriteProps) {
   const favorite = contact.favorite;
+
   return (
     <Form method="post">
       <button

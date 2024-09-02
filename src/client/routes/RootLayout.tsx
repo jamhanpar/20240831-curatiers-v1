@@ -17,8 +17,7 @@ export default function RootLayout() {
   return (
     <div className="flex justify-center font-inter border border-red-400">
       <div className="w-full md:max-w-7xl min-h-screen border border-orange-400">
-        {/* <Nav user={user} /> */}
-        <div className="border border-green-400">hello</div>
+        <Nav user={user} />
         <Outlet />
       </div>
     </div>
@@ -30,6 +29,7 @@ export async function loader() {
   // TODO: Some API call, maybe check if user is loggedIn or grab user data
   // const contacts = await getContacts();
   // return { contacts };
+
   return {
     user: { firstName: 'James', lastName: 'Park' },
     message: 'Hello from loader',
