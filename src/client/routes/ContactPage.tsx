@@ -1,7 +1,9 @@
 import { Form } from 'react-router-dom';
 
-export default function Contact() {
+// TODO: Implement the Contact Page
+export default function ContactPage() {
   const contact = {
+    id: 1,
     first: 'Your',
     last: 'Name',
     avatar: 'https://robohash.org/you.png?size=200x200',
