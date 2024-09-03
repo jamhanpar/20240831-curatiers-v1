@@ -1,13 +1,34 @@
-import { ThemeProvider } from '@emotion/react';
-import { styled } from '@mui/system';
-import { theme } from './theme/mui-system-theme.ts';
+import React from 'react';
+import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+//--- LAYOUTS ---//
+import RootLayout, { loader } from './routes/RootLayout.tsx';
+
+//--- PAGES ---//
+import HomePage from './routes/HomePage.tsx';
+import ErrorPage from './routes/ErrorPage.tsx';
+import ContactPage from './routes/ContactPage.tsx';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    loader,
+    children: [
+      {
+        path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: 'contact',
+        element: <ContactPage />,
+      },
+    ],
+  },
+]);
 
 export default function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <div className="bg-teal-200 min-h-screen flex flex-col font-roboto">
-        hello world
-      </div>
-    </ThemeProvider>
-  );
+  return <RouterProvider router={router} />;
 }
