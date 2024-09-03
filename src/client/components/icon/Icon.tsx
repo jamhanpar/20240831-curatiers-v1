@@ -11,7 +11,7 @@ const ICONS: {
   [key: string]: JSX.Element;
 } = {
   home: <BiHomeAlt2 />,
-  message: <BiMessageSquareDetail />,
+  contact: <BiMessageSquareDetail />,
   menu: <BiMenu />,
   search: <BiSearch />,
   user: <BiUserCircle />,

@@ -34,7 +34,6 @@ export default function Nav({ user }: NavProps) {
 
   const links = [
     { name: 'Home', url: '/' },
-    { name: 'About', url: '/about' },
     { name: 'Contact', url: '/contact' },
   ];
 
@@ -62,7 +61,7 @@ export default function Nav({ user }: NavProps) {
           </div>
 
           {/*--- MOBILE ---*/}
-          <Dropdown className="flex md:hidden">
+          <Dropdown>
             <MenuButton
               className={STYLES.buttonDefault}
               // aria-controls={open ? 'basic-menu' : undefined}
@@ -88,7 +87,10 @@ export default function Nav({ user }: NavProps) {
                 {links.map((link, index) => (
                   <MenuItem key={index}>
                     <Link to={link.url} className="flex gap-2 items-center">
-                      <Icon iconKey={link.name} className="text-lg" />
+                      <Icon
+                        iconKey={link.name.toLowerCase()}
+                        className="text-lg"
+                      />
                       <span>{link.name}</span>
                     </Link>
                   </MenuItem>
