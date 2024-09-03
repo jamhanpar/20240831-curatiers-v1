@@ -1,0 +1,63 @@
+import { forwardRef } from 'react';
+import { Input as BaseInput, InputProps } from '@mui/base/Input';
+import { useTheme } from '@mui/system';
+import clsx from 'clsx';
+
+interface UnstyledInputIntroductionProps {
+  className?: string;
+  slotProps?: InputProps['slotProps'];
+  placeholder?: string;
+}
+
+export default function UnstyledInputIntroduction({
+  className,
+  slotProps,
+  placeholder,
+}: UnstyledInputIntroductionProps) {
+  return (
+    <Input
+      className={className}
+      slotProps={slotProps}
+      aria-label="Demo input"
+      placeholder={placeholder || 'Search…'}
+    />
+  );
+}
+
+function useIsDarkMode() {
+  const theme = useTheme();
+  return theme.palette.mode === 'light';
+}
+
+const resolveSlotProps = (fn: any, args: any) =>
+  typeof fn === 'function' ? fn(args) : fn;
+
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  // Replace this with your app logic for determining dark modes
+  const isDarkMode = useIsDarkMode();
+
+  return (
+    <BaseInput
+      ref={ref}
+      {...props}
+      className={clsx(isDarkMode ? 'dark' : '', props.className)}
+      slotProps={{
+        ...props.slotProps,
+        input: ownerState => {
+          const resolvedSlotProps = resolveSlotProps(
+            props.slotProps?.input,
+            ownerState
+          );
+
+          return {
+            ...resolvedSlotProps,
+            className: clsx(
+              'w-80 text-sm font-normal font-sans leading-5 px-3 py-2 rounded-lg dark:shadow-slate-900 focus:shadow-outline-purple dark:focus:shadow-outline-purple dark:outline-purple-600 focus:shadow-lg border border-solid border-slate-300 hover:border-purple-500 dark:hover:border-purple-500 focus:border-purple-500 dark:focus:border-purple-600 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-300 focus-visible:outline-0',
+              resolvedSlotProps?.className
+            ),
+          };
+        },
+      }}
+    />
+  );
+});

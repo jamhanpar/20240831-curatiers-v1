@@ -1,16 +1,24 @@
 import { useState, MouseEvent } from 'react';
 import clsx from 'clsx';
+
+//--- Components ---//
 import { Dropdown } from '@mui/base/Dropdown';
 import { Menu } from '@mui/base/Menu';
 import { MenuItem } from '@mui/base/MenuItem';
 import { MenuButton } from '@mui/base/MenuButton';
 import { Link } from 'react-router-dom';
 import { User } from '../..//types/global.ts';
+import Input from '../input/Input.tsx';
 import Icon from '../icon/Icon.tsx';
 
-type NavProps = {
-  user: User;
+const STYLES = {
+  buttonDefault:
+    'p-2 bg-black rounded-md bg-opacity-0 transition ease-in-out duration-300 hover:bg-opacity-5',
 };
+
+interface NavProps {
+  user: User;
+}
 
 export default function Nav({ user }: NavProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -31,40 +39,32 @@ export default function Nav({ user }: NavProps) {
   ];
 
   return (
-    <nav className="flex w-full min-h-14 bg-transparent text-teal-300 px-2 backdrop-blur-sm border border-green-400">
+    <nav className="flex w-full min-h-14 bg-transparent text-teal-300 px-2 backdrop-blur-sm">
       <div className="flex justify-between items-center w-full">
         {/*--- LOGO ---*/}
-        <div className="flex items-center">
-          <Link className="text-xl font-bold px-4" to="/">
-            C U R A T I E R S
-          </Link>
-        </div>
+        <Link className="text-xl font-bold px-4" to="/">
+          C U R A T I E R S
+        </Link>
 
-        <div className="flex gap-2">
+        {/*--- NAV LINKS ---*/}
+        <div className="flex items-center">
           {/*--- SEARCH ---*/}
           <div className="hidden md:flex md:items-center md:gap-2">
-            <button
-              className={clsx(
-                'p-1 bg-black rounded-md',
-                'bg-opacity-0 transition ease-in-out duration-300 hover:bg-opacity-5'
-              )}
-            >
+            {/* <Input
+              type="text"
+              className="px-2 py-1 bg-black bg-opacity-5 rounded-md"
+              placeholder="Search"
+            /> */}
+            <Input className="bg-black bg-opacity-5 rounded-md" />
+            <button className={STYLES.buttonDefault}>
               <Icon iconKey="search" className="text-2xl" />
             </button>
-            <input
-              type="text"
-              placeholder="Search"
-              className="px-2 py-1 bg-black bg-opacity-5 rounded-md"
-            />
           </div>
 
-          {/*--- NAV LINKS ---*/}
+          {/*--- MOBILE ---*/}
           <Dropdown className="flex md:hidden">
             <MenuButton
-              className={clsx(
-                'p-2 bg-black rounded-md',
-                'bg-opacity-0 transition ease-in-out duration-300 hover:bg-opacity-5'
-              )}
+              className={STYLES.buttonDefault}
               // aria-controls={open ? 'basic-menu' : undefined}
               // aria-haspopup="true"
               // aria-expanded={open ? 'true' : undefined}
