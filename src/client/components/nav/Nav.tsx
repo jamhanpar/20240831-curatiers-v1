@@ -38,7 +38,7 @@ export default function Nav({ user }: NavProps) {
   ];
 
   return (
-    <nav className="flex w-full min-h-14 bg-transparent text-teal-300 px-2 backdrop-blur-sm">
+    <nav className="sticky flex w-full min-h-14 bg-slate-50 text-teal-300 px-2 backdrop-blur-sm">
       <div className="flex justify-between items-center w-full">
         {/*--- LOGO ---*/}
         <Link className="text-xl font-bold px-4" to="/">
