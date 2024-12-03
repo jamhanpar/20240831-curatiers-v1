@@ -1,8 +1,8 @@
 {
+  // Extends the base configuration from the specified path
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    // Enables the new JSX transform in React 17+
     "jsx": "react-jsx"
   }
 }
