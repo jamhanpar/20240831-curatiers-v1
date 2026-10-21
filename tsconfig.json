@@ -10,12 +10,15 @@
     "allowImportingTsExtensions": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+
+    // Specifies the module code generation: NodeNext for ECMAScript modules
+    "module": "NodeNext",
+    // Specifies the module resolution strategy: NodeNext for ECMAScript modules
+    "moduleResolution": "NodeNext"
   },
   "include": ["src"]
 }
