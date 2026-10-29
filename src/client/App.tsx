@@ -7,6 +7,7 @@ import RootLayout, { loader } from './routes/RootLayout.tsx';
 
 //--- PAGES ---//
 import HomePage from './routes/HomePage.tsx';
+import ProductResultsPage from './routes/ProductResultsPage.tsx';
 import ErrorPage from './routes/ErrorPage.tsx';
 import ContactPage from './routes/ContactPage.tsx';
 
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />,
+      },
+      {
+        path: '/product-results',
+        element: <ProductResultsPage />,
       },
       {
         path: 'contact',

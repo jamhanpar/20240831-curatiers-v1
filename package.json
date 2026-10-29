@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon -x ts-node --esm src/server/main.ts",
-    "start": "NODE_ENV=production npx tsx src/server/main.ts",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=production npx tsx src/server/main.ts",
     "build": "vite build"
   },
   "dependencies": {
